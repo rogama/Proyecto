@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<h:body>
+	<h:head>
+	<!-- Importantisimo meterlo si no jsf no sabe donde ubicar el codigo JS y no funcionara -->
+	</h:head>
+	
+		<h:form>
+			<h:selectOneMenu value="#{sesionEncuestaUsuario.encuesta}" valueChangeListener="#{sesionEncuestaUsuario.setPreguntas}">
+				<f:selectItems value="#{sesionEncuestaUsuario.coleccionEncuestas}"/>
+				<f:ajax render="preguntasPorEncuesta"></f:ajax>
+			</h:selectOneMenu><br />
+			
+			<h:selectOneMenu id="preguntasPorEncuesta">
+				<f:selectItems value="#{sesionEncuestaUsuario.coleccionPreguntasPorEncuesta}"/>
+			</h:selectOneMenu>
+		</h:form>
+		
+		<h:form>
+			Teclea algo <h:inputText value="#{sesionEncuestaUsuario.textoPrueba}" >
+				<f:ajax render="textoEnriquecido" event="keyup"  execute="textoEnriquecido2"></f:ajax>
+			</h:inputText><br></br>
+			<h:outputText id="textoEnriquecido" value="#{sesionEncuestaUsuario.textoEnriquecidoPrueba}" />
+			<br />
+			Teclea algo  <h:inputText id="textoEnriquecido2" value="#{sesionEncuestaUsuario.textoEnriquecido2Prueba}" />
+		</h:form>
+	</h:body>
+</html>

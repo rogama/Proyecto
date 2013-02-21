@@ -1,0 +1,20 @@
+@CHARSET "ISO-8859-1";
+.largeSize{
+	size: 210%;
+	color: red;
+}
+
+.nomalSize{
+	size: 110%;
+	color: blue;
+}
+
+.error{
+	color:red;
+}
+
+.encabezadoNavegacion{
+	background-color: #fa23f1;
+	font-family: sans-serif;
+	font-style: italic;
+}
