@@ -57,7 +57,15 @@ public class ListadoEncuestas {
 		ExternalContext ec = fContext.getExternalContext();
 		HttpServletRequest request = (HttpServletRequest) ec.getRequest();
 		
-		encuestaSeleccionada = request.getParameter("Encuesta");
+		HttpSession sesion = request.getSession();
+		
+		encuestaSeleccionada = (String) sesion.getAttribute("Encuesta");
+		encuestaSeleccionada = (String) request.getParameter("Encuesta");
+		
+		while (request.getParameterNames().hasMoreElements()) {
+			
+			System.out.println(request.getParameterNames().nextElement());		
+		}
 		
 		System.out.println(encuestaSeleccionada);
 		return "ResponderEncuesta";
